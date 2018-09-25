@@ -1,0 +1,79 @@
+{
+  "summary" : "Assignment for Week 2 of the Coursera course 'Kotlin for Java Developers':https://www.coursera.org/learn/kotlin-for-java-developers/",
+  "title" : "Kotlin for Java Developers. Week 2.",
+  "programming_language" : "kotlin",
+  "language" : "en",
+  "items" : [ {
+    "id" : 0,
+    "title" : "Mastermind",
+    "unit_id" : 0,
+    "task_list" : [ {
+      "name" : "Task",
+      "stepic_id" : 0,
+      "task_files" : {
+        "src/mastermind/evaluateGuess.kt" : {
+          "name" : "src/mastermind/evaluateGuess.kt",
+          "text" : "package mastermind\n\ndata class Evaluation(val positions: Int, val letters: Int)\n\nfun evaluateGuess(secret: String, guess: String): Evaluation {\n    TODO()\n}\n",
+          "placeholders" : [ {
+            "offset" : 148,
+            "length" : 6,
+            "hints" : [ ],
+            "placeholder_text" : "TODO()"
+          } ]
+        },
+        "src/mastermind/playMastermind.kt" : {
+          "name" : "src/mastermind/playMastermind.kt",
+          "text" : "package mastermind\n\nimport java.util.*\n\nval ALPHABET = 'A'..'F'\nval CODE_LENGTH = 4\n\nfun main(args: Array<String>) {\n    playBullsAndCows()\n}\n\nfun playBullsAndCows(\n        secret: String = generateSecret()\n) {\n    val scanner = Scanner(System.`in`)\n    var evaluation: Evaluation\n\n    do {\n        print(\"Your guess: \")\n        var guess = scanner.next()\n        while (hasErrorsInInput(guess)) {\n            println(\"Incorrect input: $guess. \" +\n                    \"It should consist of ${CODE_LENGTH} digits. \" +\n                    \"Try again.\")\n            guess = scanner.next()\n        }\n        evaluation = evaluateGuess(secret, guess)\n        if (evaluation.isComplete()) {\n            println(\"You are correct!\")\n        } else {\n            println(\"Positions: ${evaluation.positions}; letters: ${evaluation.letters}.\")\n        }\n\n    } while (!evaluation.isComplete())\n}\n\nfun Evaluation.isComplete(): Boolean = positions == CODE_LENGTH\n\nfun hasErrorsInInput(guess: String): Boolean {\n    val possibleLetters = ALPHABET.toSet()\n    return guess.length != CODE_LENGTH || guess.any { it !in possibleLetters }\n}\n\nfun generateSecret(differentLetters: Boolean = false): String {\n    val chars = ALPHABET.toMutableList()\n    val random = Random()\n    return buildString {\n        for (i in 1..CODE_LENGTH) {\n            val letter = chars[random.nextInt(chars.size)]\n            append(letter)\n            if (differentLetters) {\n                chars.remove(letter)\n            }\n        }\n    }\n}\n",
+          "placeholders" : [ ]
+        },
+        "test/MastermindTests.kt" : {
+          "name" : "test/MastermindTests.kt",
+          "text" : "package mastermind\n\nimport org.junit.Assert\nimport org.junit.Test\n\nopen class MastermindTests {\n\n    private fun testEvaluation(secret: String, guess: String, positions: Int, letters: Int) {\n        val expected = Evaluation(positions, letters)\n        val evaluation = evaluateGuess(secret, guess)\n        Assert.assertEquals(\"Wrong evaluation for secret=$secret, guess=$guess\",\n                expected, evaluation)\n    }\n\n    // simple\n    @Test\n    fun testEqual() = testEvaluation(\"ABCD\", \"ABCD\", 4, 0)\n\n    @Test\n    fun testOnlyLetters() = testEvaluation(\"DCBA\", \"ABCD\", 0, 4)\n\n    @Test\n    fun testSwap() = testEvaluation(\"ABCD\", \"ABDC\", 2, 2)\n\n    @Test\n    fun testPositions() = testEvaluation(\"ABCD\", \"ABCF\", 3, 0)\n\n    @Test\n    fun testLetters() = testEvaluation(\"DAEF\", \"FECA\", 0, 3)\n\n\n    // repeated letters\n    @Test\n    fun testSample() = testEvaluation(\"AABC\", \"ADFA\", 1, 1)\n}",
+          "placeholders" : [ ]
+        }
+      },
+      "test_files" : {
+        "test/MastermindTests.kt" : "package mastermind\n\nimport org.junit.Assert\nimport org.junit.Test\n\nopen class MastermindTests {\n\n    private fun testEvaluation(secret: String, guess: String, positions: Int, letters: Int) {\n        val expected = Evaluation(positions, letters)\n        val evaluation = evaluateGuess(secret, guess)\n        Assert.assertEquals(\"Wrong evaluation for secret=$secret, guess=$guess\",\n                expected, evaluation)\n    }\n\n    // simple\n    @Test\n    fun testEqual() = testEvaluation(\"ABCD\", \"ABCD\", 4, 0)\n\n    @Test\n    fun testOnlyLetters() = testEvaluation(\"DCBA\", \"ABCD\", 0, 4)\n\n    @Test\n    fun testSwap() = testEvaluation(\"ABCD\", \"ABDC\", 2, 2)\n\n    @Test\n    fun testPositions() = testEvaluation(\"ABCD\", \"ABCF\", 3, 0)\n\n    @Test\n    fun testLetters() = testEvaluation(\"DAEF\", \"FECA\", 0, 3)\n\n\n    // repeated letters\n    @Test\n    fun testSample() = testEvaluation(\"AABC\", \"ADFA\", 1, 1)\n}"
+      },
+      "description_text" : "## Mastermind game\n\n[Mastermind](https://en.wikipedia.org/wiki/Mastermind_(board_game)) is a board game.\nThe first player invents a code consisting of 4 balls of six different colors and the second player tries to break it.\nFor task simplicity, we'll use letters from A to F instead of colors.\nThe second player makes consecutive attempts to guess the code: \nhe suggests the new combination of letters on each try until his guess is correct.\nThe first player evaluates each combination by comparing it to her secret, and says\nhow many letters are guessed correctly. First, she says the number of letters \nwhich are guessed with their positions, then the number of remaining letters\nwhich are guessed right but stay on the wrong positions. \n\nYour task is to evaluate a guess in comparison to a given secret code.\n\nThe task has two parts.\nAt first, solve this task when letters can't be repeated (in both, a secret and a guess codes).\nThen, assume the letters might be repeated.\n\n#### Example 1 (Different letters)\n\nSecret `ABCD` and guess `ABCD` must be evaluated to: `positions = 4, letters = 0`.\nAll letters are guessed correctly in respect to their positions.\n\n#### Example 2 (Different letters)\n\nSecret `ABCD` and guess `CDBA` must be evaluated to: `positions = 0, letters = 4`.\nAll letters are guessed correctly, but none has the right position.\n\n#### Example 3 (Different letters)\n\nSecret `ABCD` and guess `ABDC` must be evaluated to: `positions = 2, letters = 2`.\n`A` and `B` letters and their positions are guessed correctly.\n`C` and `D` letters are guessed correctly, but their positions are wrong.  \n\n#### Example 4 (Repeated letters)\n\nSecret `AABC` and guess `ADFA` must be evaluated to: `positions = 1, letters = 1`.\n`A` at the first position is guessed correctly with its position.\nIf we remove the first `A` from consideration (comparing \nthe remaining `ABC` and `DFA` only), it leaves us the second `A` which is guessed\ncorrectly, but which position is wrong.\n\nTo pass this assignment, the first part is enough.\nNote that the solution for the second task is the solution for the first one,\nso you can implement the whole task straight away.\nUpload one solution only; grades are given automatically for the second\ntask if it passes the tests.\nNote that you may upload the solution for the first task, get the grades,\nand later reapply the updated solution for the second task.",
+      "description_format" : "md",
+      "additional_files" : {
+        "partId" : {
+          "text" : "GWATl",
+          "is_visible" : false
+        },
+        "assignmentKey" : {
+          "text" : "",
+          "is_visible" : false
+        }
+      },
+      "task_type" : "edu",
+      "feedback_link" : {
+        "link_type" : "CUSTOM",
+        "link" : "https://www.coursera.org/learn/kotlin-for-java-developers/programming/vmwVT/mastermind-game/discussions"
+      }
+    } ],
+    "type" : "lesson"
+  }, {
+    "id" : 0,
+    "title" : "Edu additional materials",
+    "unit_id" : 0,
+    "task_list" : [ {
+      "name" : "Edu additional materials",
+      "stepic_id" : 0,
+      "task_files" : { },
+      "test_files" : { },
+      "additional_files" : {
+        "build.gradle" : {
+          "text" : "buildscript {\n    ext.kotlin_version = '1.2.51'\n\n    repositories {\n        mavenCentral()\n    }\n\n    dependencies {\n        classpath \"org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version\"\n    }\n}\n\ndef printOutput(def output) {\n    return tasks.create(\"printOutput\") {\n        for (line in output.toString().readLines()) {\n            println \"#educational_plugin\" + line\n        }\n    }\n}\n\nsubprojects {\n    apply plugin: 'application'\n    apply plugin: 'java'\n    apply plugin: 'kotlin'\n\n    sourceCompatibility = 1.8\n\n    repositories {\n        mavenCentral()\n    }\n\n    dependencies {\n        compile \"org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version\"\n        testCompile group: 'junit', name: 'junit', version: '4.12'\n    }\n\n    compileKotlin.destinationDir = compileJava.destinationDir\n\n    compileKotlin {\n        kotlinOptions.jvmTarget = \"1.8\"\n    }\n    compileTestKotlin {\n        kotlinOptions.jvmTarget = \"1.8\"\n    }\n\n    sourceSets {\n        main {\n            kotlin.srcDir 'src'\n            java.srcDir 'src'\n        }\n        test {\n            kotlin.srcDir 'test'\n            java.srcDir 'test'\n        }\n    }\n\n    mainClassName = project.hasProperty(\"mainClass\") ? project.getProperty(\"mainClass\") : \"\"\n\n    test {\n        outputs.upToDateWhen { false }\n        afterTest { TestDescriptor test, TestResult result ->\n            if (result.resultType == TestResult.ResultType.FAILURE) {\n                def message = result.exception?.message ?: \"Wrong answer\"\n                def lines = message.readLines()\n                println \"#educational_plugin FAILED + \" + lines[0]\n                lines[1..-1].forEach { line ->\n                    println \"#educational_plugin\" + line\n                }\n                // we need this to separate output of different tests\n                println\n            }\n        }\n    }\n\n    def runOutput = new ByteArrayOutputStream()\n    tasks.run.setStandardOutput(runOutput)\n    tasks.run.doLast { printOutput(runOutput) }\n}\n\nproject(':util') {\n    dependencies {\n        compile group: 'junit', name: 'junit', version: '4.12'\n    }\n}\n\nconfigure(subprojects.findAll {it.name != 'util'}) {\n    dependencies {\n        compile project(':util').sourceSets.main.output\n        testCompile project(':util').sourceSets.test.output\n    }\n}\n\ntask wrapper(type: Wrapper) {\n    gradleVersion = '4.8'\n}\n",
+          "is_visible" : false
+        }
+      },
+      "task_type" : "edu",
+      "feedback_link" : {
+        "link_type" : "STEPIK"
+      }
+    } ],
+    "type" : "lesson"
+  } ]
+}

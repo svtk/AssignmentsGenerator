@@ -1,0 +1,131 @@
+{
+  "summary" : "Assignment for Week 4 of the Coursera course 'Kotlin for Java Developers':https://www.coursera.org/learn/kotlin-for-java-developers/",
+  "title" : "Kotlin for Java Developers. Week 4.",
+  "programming_language" : "kotlin",
+  "language" : "en",
+  "items" : [ {
+    "id" : 0,
+    "title" : "Rationals",
+    "unit_id" : 0,
+    "task_list" : [ {
+      "name" : "Task",
+      "stepic_id" : 0,
+      "task_files" : {
+        "src/rationals/Rational.kt" : {
+          "name" : "src/rationals/Rational.kt",
+          "text" : "package rationals\n\n\n\nfun main(args: Array<String>) {\n    val r1 = 1 divBy 2\n    val r2 = 2000000000L divBy 4000000000L\n    println(r1 == r2)\n\n    println((-2 divBy 4).toString() == \"-1/2\")\n    println(\"117/1098\".toRational().toString() == \"13/122\")\n\n    println(\"1/2\".toRational() - \"1/3\".toRational() == \"1/6\".toRational())\n    println(\"1/2\".toRational() + \"1/3\".toRational() == \"5/6\".toRational())\n\n    println(-(1 divBy 2) == (-1 divBy 2))\n\n    println((1 divBy 2) * (1 divBy 3) == \"1/6\".toRational())\n    println((1 divBy 2) / (1 divBy 4) == \"2\".toRational())\n\n    println((1 divBy 2) < (2 divBy 3))\n    println((1 divBy 2) in (1 divBy 3)..(2 divBy 3))\n\n    println(\"912016490186296920119201192141970416029\".toBigInteger() divBy\n            \"1824032980372593840238402384283940832058\".toBigInteger() == 1 divBy 2)\n}",
+          "placeholders" : [ ]
+        },
+        "test/TestRationals.kt" : {
+          "name" : "test/TestRationals.kt",
+          "text" : "package rationals\n\nimport org.junit.Assert\nimport org.junit.Test\n\nclass TestRationals {\n    @Test\n    fun test1() {\n        val r1 = 1 divBy 2\n        val r2 = 2000000000L divBy 4000000000L\n        Assert.assertEquals(\"\"\"Wrong result for\n            |val r1 = 1 divBy 2\n            |val r2 = 2000000000L divBy 4000000000L\n            |r1 == r2\"\"\".trimMargin(),\n                true, r1 == r2)\n    }\n\n    @Test\n    fun test2() {\n        Assert.assertEquals(\"Wrong result for\\n(-2 divBy 4).toString() == \\\"-1/2\\\"\",\n                true, (-2 divBy 4).toString() == \"-1/2\")\n    }\n\n    @Test\n    fun test3() {\n        Assert.assertEquals(\"Wrong result for\\n\\\"117/1098\\\".toRational().toString() == \\\"13/122\\\"\",\n                true, \"117/1098\".toRational().toString() == \"13/122\")\n    }\n\n    @Test\n    fun test4() {\n        Assert.assertEquals(\"Wrong result for\\n\\\"1/2\\\".toRational() - \\\"1/3\\\".toRational() == \\\"1/6\\\".toRational()\",\n                true, \"1/2\".toRational() - \"1/3\".toRational() == \"1/6\".toRational())\n        Assert.assertEquals(\"Wrong result for\\n\\\"1/2\\\".toRational() + \\\"1/3\\\".toRational() == \\\"5/6\\\".toRational()\",\n                true, \"1/2\".toRational() + \"1/3\".toRational() == \"5/6\".toRational())\n    }\n\n    @Test\n    fun test5() {\n        Assert.assertEquals(\"Wrong result for\\n-(1 divBy 2) == (-1 divBy 2)\",\n                true, -(1 divBy 2) == (-1 divBy 2))\n    }\n\n    @Test\n    fun test6() {\n        Assert.assertEquals(\"Wrong result for\\n(1 divBy 2) * (1 divBy 3) == \\\"1/6\\\".toRational()\",\n                true, (1 divBy 2) * (1 divBy 3) == \"1/6\".toRational())\n        Assert.assertEquals(\"Wrong result for\\n(1 divBy 2) / (1 divBy 4) == \\\"2\\\".toRational()\",\n                true, (1 divBy 2) / (1 divBy 4) == \"2\".toRational())\n    }\n\n    @Test\n    fun test7() {\n        Assert.assertEquals(\"Wrong result for\\n(1 divBy 2) < (2 divBy 3)\",\n                true, (1 divBy 2) < (2 divBy 3))\n        Assert.assertEquals(\"Wrong result for\\n(1 divBy 2) in (1 divBy 3)..(2 divBy 3)\",\n                true, (1 divBy 2) in (1 divBy 3)..(2 divBy 3))\n    }\n\n    @Test\n    fun test8() {\n        Assert.assertEquals(\"Wrong result for\\n\" +\n                \"\\\"912016490186296920119201192141970416029\\\".toBigInteger() divBy \" +\n                \"\\\"1824032980372593840238402384283940832058\\\".toBigInteger() == 1 divBy 2\",\n                true, \"912016490186296920119201192141970416029\".toBigInteger() divBy\n                \"1824032980372593840238402384283940832058\".toBigInteger() == 1 divBy 2)\n    }\n}",
+          "placeholders" : [ ]
+        }
+      },
+      "test_files" : {
+        "test/TestRationals.kt" : "package rationals\n\nimport org.junit.Assert\nimport org.junit.Test\n\nclass TestRationals {\n    @Test\n    fun test1() {\n        val r1 = 1 divBy 2\n        val r2 = 2000000000L divBy 4000000000L\n        Assert.assertEquals(\"\"\"Wrong result for\n            |val r1 = 1 divBy 2\n            |val r2 = 2000000000L divBy 4000000000L\n            |r1 == r2\"\"\".trimMargin(),\n                true, r1 == r2)\n    }\n\n    @Test\n    fun test2() {\n        Assert.assertEquals(\"Wrong result for\\n(-2 divBy 4).toString() == \\\"-1/2\\\"\",\n                true, (-2 divBy 4).toString() == \"-1/2\")\n    }\n\n    @Test\n    fun test3() {\n        Assert.assertEquals(\"Wrong result for\\n\\\"117/1098\\\".toRational().toString() == \\\"13/122\\\"\",\n                true, \"117/1098\".toRational().toString() == \"13/122\")\n    }\n\n    @Test\n    fun test4() {\n        Assert.assertEquals(\"Wrong result for\\n\\\"1/2\\\".toRational() - \\\"1/3\\\".toRational() == \\\"1/6\\\".toRational()\",\n                true, \"1/2\".toRational() - \"1/3\".toRational() == \"1/6\".toRational())\n        Assert.assertEquals(\"Wrong result for\\n\\\"1/2\\\".toRational() + \\\"1/3\\\".toRational() == \\\"5/6\\\".toRational()\",\n                true, \"1/2\".toRational() + \"1/3\".toRational() == \"5/6\".toRational())\n    }\n\n    @Test\n    fun test5() {\n        Assert.assertEquals(\"Wrong result for\\n-(1 divBy 2) == (-1 divBy 2)\",\n                true, -(1 divBy 2) == (-1 divBy 2))\n    }\n\n    @Test\n    fun test6() {\n        Assert.assertEquals(\"Wrong result for\\n(1 divBy 2) * (1 divBy 3) == \\\"1/6\\\".toRational()\",\n                true, (1 divBy 2) * (1 divBy 3) == \"1/6\".toRational())\n        Assert.assertEquals(\"Wrong result for\\n(1 divBy 2) / (1 divBy 4) == \\\"2\\\".toRational()\",\n                true, (1 divBy 2) / (1 divBy 4) == \"2\".toRational())\n    }\n\n    @Test\n    fun test7() {\n        Assert.assertEquals(\"Wrong result for\\n(1 divBy 2) < (2 divBy 3)\",\n                true, (1 divBy 2) < (2 divBy 3))\n        Assert.assertEquals(\"Wrong result for\\n(1 divBy 2) in (1 divBy 3)..(2 divBy 3)\",\n                true, (1 divBy 2) in (1 divBy 3)..(2 divBy 3))\n    }\n\n    @Test\n    fun test8() {\n        Assert.assertEquals(\"Wrong result for\\n\" +\n                \"\\\"912016490186296920119201192141970416029\\\".toBigInteger() divBy \" +\n                \"\\\"1824032980372593840238402384283940832058\\\".toBigInteger() == 1 divBy 2\",\n                true, \"912016490186296920119201192141970416029\".toBigInteger() divBy\n                \"1824032980372593840238402384283940832058\".toBigInteger() == 1 divBy 2)\n    }\n}"
+      },
+      "description_text" : "## Rational Numbers\n\nYour task is to implement a class `Rational` representing rational numbers.\nA rational number is a number expressed as a ratio `n/d` , where `n` (numerator)\nand `d` (denominator) are integer numbers, except that `d` cannot be zero.\nExamples of rational numbers are `1/2`, `2/3`, `117/1098`, and `2/1` (which we\ncan alternatively written simply as `2`).\nRational numbers are represented exactly, without rounding or\napproximation, which gives them the advantage compared to floating-point numbers. \n\nYour task it to model the behavior of rational numbers, including allowing them\nto be added, subtracted, multiplied, divided and compared.\nAll arithmetic and comparison operations must be available for rationals:\n`+`, `-`, `*`, `/`, `==`, `<`, `>=` etc.\n\nThe `Rational` class should contain a numerator and denominator which might be\nunlimited numbers, so use `java.util.BigInteger` class for storing them.\n\nThe rational numbers must be compared due to their \"normalized\" forms:\nfor example, `1/2` should be equal to `2/4`, or `117/1098` to `13/122`.\nThe string representation of a rational must be also given in the normalized form.\n\nYou need to support two ways to create rationals. The first one is to convert\na string representation to a rational directly, like in `\"1/2\".toRational()`.\nConverting an integer number should also be possible, and `1` should be used\nas denominator by default: `\"23\".toRational()` is the same as `\"23/1\".toRational()`.\n\nThe alternative way to create a rational is to use `divBy` infix function\nlike in `1 divBy 2`. The receiver and the argument might be of types `Int`,\n`Long`, or `BigInteger.` \n\n\n#### Examples\n\nAll the following expressions must be evaluated to `true`:\n\n```\n(-2 divBy 4).toString() == \"-1/2\"\n\"117/1098\".toRational().toString() == \"13/122\"\n\n\"1/2\".toRational() - \"1/3\".toRational() == \"1/6\".toRational()\n\"1/2\".toRational() + \"1/3\".toRational() == \"5/6\".toRational()\n\n-(1 divBy 2) == (-1 divBy 2)\n\n(1 divBy 2) * (1 divBy 3) == \"1/6\".toRational()\n(1 divBy 2) / (1 divBy 4) == \"2\".toRational()\n\n(1 divBy 2) < (2 divBy 3)\n(1 divBy 2) in (1 divBy 3)..(2 divBy 3)\n\n\"912016490186296920119201192141970416029\".toBigInteger() divBy\n            \"1824032980372593840238402384283940832058\".toBigInteger() == 1 divBy 2\n```",
+      "description_format" : "md",
+      "additional_files" : {
+        "partId" : {
+          "text" : "fCAt8",
+          "is_visible" : false
+        },
+        "assignmentKey" : {
+          "text" : "",
+          "is_visible" : false
+        }
+      },
+      "task_type" : "edu",
+      "feedback_link" : {
+        "link_type" : "CUSTOM",
+        "link" : "https://www.coursera.org/learn/kotlin-for-java-developers/programming/FNjea/rationals-board/discussions"
+      }
+    } ],
+    "type" : "lesson"
+  }, {
+    "id" : 0,
+    "title" : "Board",
+    "unit_id" : 0,
+    "task_list" : [ {
+      "name" : "Task",
+      "stepic_id" : 0,
+      "task_files" : {
+        "src/board/Board.kt" : {
+          "name" : "src/board/Board.kt",
+          "text" : "package board\n\ninterface Cell {\n    val i: Int\n    val j: Int\n}\n\nenum class Direction {\n    UP, DOWN, RIGHT, LEFT\n}\n\ninterface SquareBoard {\n    val width: Int\n\n    fun getCellOrNull(i: Int, j: Int): Cell?\n    fun getCell(i: Int, j: Int): Cell\n\n    fun getAllCells(): Collection<Cell>\n\n    fun getRow(i: Int, jRange: IntProgression): List<Cell>\n    fun getColumn(iRange: IntProgression, j: Int): List<Cell>\n\n    fun Cell.getNeighbour(direction: Direction): Cell?\n}\n\ninterface GameBoard<T> : SquareBoard {\n\n    operator fun get(cell: Cell): T?\n    operator fun set(cell: Cell, value: T?)\n\n    fun filter(predicate: (T?) -> Boolean): Collection<Cell>\n    fun find(predicate: (T?) -> Boolean): Cell?\n    fun any(predicate: (T?) -> Boolean): Boolean\n    fun all(predicate: (T?) -> Boolean): Boolean\n}",
+          "placeholders" : [ ]
+        },
+        "src/board/BoardImpl.kt" : {
+          "name" : "src/board/BoardImpl.kt",
+          "text" : "package board\n\nimport board.Direction.*\n\nfun createSquareBoard(width: Int): SquareBoard = TODO()\nfun <T> createGameBoard(width: Int): GameBoard<T> = TODO()\n\n",
+          "placeholders" : [ {
+            "offset" : 90,
+            "length" : 6,
+            "hints" : [ ],
+            "placeholder_text" : "TODO()"
+          }, {
+            "offset" : 149,
+            "length" : 6,
+            "hints" : [ ],
+            "placeholder_text" : "TODO()"
+          } ]
+        },
+        "test/TestGameBoard.kt" : {
+          "name" : "test/TestGameBoard.kt",
+          "text" : "package board\n\nimport org.junit.Assert\nimport org.junit.Test\n\nclass TestGameBoard {\n    operator fun <T> GameBoard<T>.get(i: Int, j: Int) = get(getCell(i, j))\n    operator fun <T> GameBoard<T>.set(i: Int, j: Int, value: T) = set(getCell(i, j), value)\n\n    @Test\n    fun testGetAndSetElement() {\n        val gameBoard = createGameBoard<Char>(2)\n        gameBoard[1, 1] = 'a'\n        Assert.assertEquals('a', gameBoard[1, 1])\n    }\n\n    @Test\n    fun testFilter() {\n        val gameBoard = createGameBoard<Char>(2)\n        gameBoard[1, 1] = 'a'\n        gameBoard[1, 2] = 'b'\n        val cells = gameBoard.filter { it == 'a' }\n        Assert.assertEquals(1, cells.size)\n        val cell = cells.first()\n        Assert.assertEquals(1, cell.i)\n        Assert.assertEquals(1, cell.j)\n    }\n\n    @Test\n    fun testAll() {\n        val gameBoard = createGameBoard<Char>(2)\n        gameBoard[1, 1] = 'a'\n        gameBoard[1, 2] = 'a'\n        Assert.assertFalse(gameBoard.all { it == 'a' })\n        gameBoard[2, 1] = 'a'\n        gameBoard[2, 2] = 'a'\n        Assert.assertTrue(gameBoard.all { it == 'a' })\n    }\n\n    @Test\n    fun testAny() {\n        val gameBoard = createGameBoard<Char>(2)\n        gameBoard[1, 1] = 'a'\n        gameBoard[1, 2] = 'b'\n        Assert.assertTrue(gameBoard.any { it in 'a'..'b' })\n        Assert.assertTrue(gameBoard.any { it == null })\n    }\n}",
+          "placeholders" : [ ]
+        },
+        "test/TestSquareBoard.kt" : {
+          "name" : "test/TestSquareBoard.kt",
+          "text" : "package board\n\nimport org.junit.Assert\nimport org.junit.Test\n\nclass TestSquareBoard {\n\n    private fun Cell?.asString() = if (this != null) \"($i, $j)\" else \"\"\n\n    private fun Collection<Cell>.asString() = joinToString(prefix = \"[\", postfix = \"]\") { it.asString() }\n\n    @Test\n    fun testAllCells() {\n        val board = createSquareBoard(2)\n        val cells = board.getAllCells().sortedWith(compareBy<Cell> { it.i }.thenBy { it.j })\n        Assert.assertEquals(\"[(1, 1), (1, 2), (2, 1), (2, 2)]\", cells.asString())\n    }\n\n    @Test\n    fun testCell() {\n        val board = createSquareBoard(2)\n        val cell = board.getCellOrNull(1, 2)\n        Assert.assertEquals(1, cell?.i)\n        Assert.assertEquals(2, cell?.j)\n    }\n\n    @Test\n    fun testNoCell() {\n        val board = createSquareBoard(2)\n        val cell = board.getCellOrNull(3, 3)\n        Assert.assertEquals(null, cell)\n    }\n\n    @Test\n    fun testRow() {\n        val board = createSquareBoard(2)\n        val row = board.getRow(1, 1..2)\n        Assert.assertEquals(\"[(1, 1), (1, 2)]\", row.asString())\n    }\n\n    @Test\n    fun testRowReversed() {\n        val board = createSquareBoard(2)\n        val row = board.getRow(1, 2 downTo 1)\n        Assert.assertEquals(\"[(1, 2), (1, 1)]\", row.asString())\n    }\n\n    @Test\n    fun testRowWrongRange() {\n        val board = createSquareBoard(2)\n        val row = board.getRow(1, 1..10)\n        Assert.assertEquals(\"[(1, 1), (1, 2)]\", row.asString())\n    }\n\n    @Test\n    fun testNeighbour() {\n        val board = createSquareBoard(2)\n        with(board) {\n            val cell = getCellOrNull(1, 1)\n            Assert.assertNotNull(cell)\n            Assert.assertEquals(null, cell!!.getNeighbour(Direction.UP))\n            Assert.assertEquals(null, cell.getNeighbour(Direction.LEFT))\n            Assert.assertEquals(\"(2, 1)\", cell.getNeighbour(Direction.DOWN).asString())\n            Assert.assertEquals(\"(1, 2)\", cell.getNeighbour(Direction.RIGHT).asString())\n        }\n    }\n}\n",
+          "placeholders" : [ ]
+        }
+      },
+      "test_files" : {
+        "test/TestGameBoard.kt" : "package board\n\nimport org.junit.Assert\nimport org.junit.Test\n\nclass TestGameBoard {\n    operator fun <T> GameBoard<T>.get(i: Int, j: Int) = get(getCell(i, j))\n    operator fun <T> GameBoard<T>.set(i: Int, j: Int, value: T) = set(getCell(i, j), value)\n\n    @Test\n    fun testGetAndSetElement() {\n        val gameBoard = createGameBoard<Char>(2)\n        gameBoard[1, 1] = 'a'\n        Assert.assertEquals('a', gameBoard[1, 1])\n    }\n\n    @Test\n    fun testFilter() {\n        val gameBoard = createGameBoard<Char>(2)\n        gameBoard[1, 1] = 'a'\n        gameBoard[1, 2] = 'b'\n        val cells = gameBoard.filter { it == 'a' }\n        Assert.assertEquals(1, cells.size)\n        val cell = cells.first()\n        Assert.assertEquals(1, cell.i)\n        Assert.assertEquals(1, cell.j)\n    }\n\n    @Test\n    fun testAll() {\n        val gameBoard = createGameBoard<Char>(2)\n        gameBoard[1, 1] = 'a'\n        gameBoard[1, 2] = 'a'\n        Assert.assertFalse(gameBoard.all { it == 'a' })\n        gameBoard[2, 1] = 'a'\n        gameBoard[2, 2] = 'a'\n        Assert.assertTrue(gameBoard.all { it == 'a' })\n    }\n\n    @Test\n    fun testAny() {\n        val gameBoard = createGameBoard<Char>(2)\n        gameBoard[1, 1] = 'a'\n        gameBoard[1, 2] = 'b'\n        Assert.assertTrue(gameBoard.any { it in 'a'..'b' })\n        Assert.assertTrue(gameBoard.any { it == null })\n    }\n}",
+        "test/TestSquareBoard.kt" : "package board\n\nimport org.junit.Assert\nimport org.junit.Test\n\nclass TestSquareBoard {\n\n    private fun Cell?.asString() = if (this != null) \"($i, $j)\" else \"\"\n\n    private fun Collection<Cell>.asString() = joinToString(prefix = \"[\", postfix = \"]\") { it.asString() }\n\n    @Test\n    fun testAllCells() {\n        val board = createSquareBoard(2)\n        val cells = board.getAllCells().sortedWith(compareBy<Cell> { it.i }.thenBy { it.j })\n        Assert.assertEquals(\"[(1, 1), (1, 2), (2, 1), (2, 2)]\", cells.asString())\n    }\n\n    @Test\n    fun testCell() {\n        val board = createSquareBoard(2)\n        val cell = board.getCellOrNull(1, 2)\n        Assert.assertEquals(1, cell?.i)\n        Assert.assertEquals(2, cell?.j)\n    }\n\n    @Test\n    fun testNoCell() {\n        val board = createSquareBoard(2)\n        val cell = board.getCellOrNull(3, 3)\n        Assert.assertEquals(null, cell)\n    }\n\n    @Test\n    fun testRow() {\n        val board = createSquareBoard(2)\n        val row = board.getRow(1, 1..2)\n        Assert.assertEquals(\"[(1, 1), (1, 2)]\", row.asString())\n    }\n\n    @Test\n    fun testRowReversed() {\n        val board = createSquareBoard(2)\n        val row = board.getRow(1, 2 downTo 1)\n        Assert.assertEquals(\"[(1, 2), (1, 1)]\", row.asString())\n    }\n\n    @Test\n    fun testRowWrongRange() {\n        val board = createSquareBoard(2)\n        val row = board.getRow(1, 1..10)\n        Assert.assertEquals(\"[(1, 1), (1, 2)]\", row.asString())\n    }\n\n    @Test\n    fun testNeighbour() {\n        val board = createSquareBoard(2)\n        with(board) {\n            val cell = getCellOrNull(1, 1)\n            Assert.assertNotNull(cell)\n            Assert.assertEquals(null, cell!!.getNeighbour(Direction.UP))\n            Assert.assertEquals(null, cell.getNeighbour(Direction.LEFT))\n            Assert.assertEquals(\"(2, 1)\", cell.getNeighbour(Direction.DOWN).asString())\n            Assert.assertEquals(\"(1, 2)\", cell.getNeighbour(Direction.RIGHT).asString())\n        }\n    }\n}\n"
+      },
+      "description_text" : "## Board\n\nYour task is to implement interfaces `SquareBoard` and `GameBoard`.\n\n#### SquareBoard\n\nSquareBoard stores the information about the square board and all the cells on it.\nIt allows to get a cell by its indexes, get parts of columns and rows on a board,\nor get a specified neighbour of a cell.\n\nNote that the numbering of cells starts with 1, not with 0.\nA board of a width 2 consists of the following cells:\n```\n(1, 1) (1, 2)\n(2, 1) (2, 2)\n```\n\nFor the following examples, we'll use this board of a width 2:\n```\nval board = createSquareBoard(2)\n```\n\nIf you call `board.getCellOrNull(3, 3)` for such board, you'll get `null` as\nthe result, because the board doesn't have a cell with such coordinates.\nThe function `Board.getCell` should throw `IllegalArgumentException` for\nincorrect values of `i` and `j`.\n\nYou can write `board.getRow(1, 1..2)` or `board.getRow(1, 2 downTo 1)`,\nand you'll get the lists of cells `[(1, 1), (1, 2)]` and `[(1, 2), (1, 1)]`\naccordingly.\nNote how using the range `2 downTo 1` returns a row in a reversed order.\nYou can use any range to get a part of a column or a row.\n\nNote that `getRow` and `getColumn` should return a list containing only\nthe cells that belong to the board if the range is larger than the board limits\nand ignore other indexes,\nthus, `board.getRow(1, 1..10)` should return `[(1, 1), (1, 2)]`.  \n\nThe neighbours of a cell `(1, 1)` depending on the direction should be:\n```\nDirection.UP - null     \nDirection.LEFT - null     \nDirection.DOWN - (2, 1) \nDirection.RIGHT - (1, 2)\n```\n\nCreate only `width * width` cells; all the functions working with cells\nshould return existing cells instead of creating new ones. \n\n#### GameBoard\n\nGameBoard lets to store the values in board cells, update them,\nand ask the general information about the stored values (like `any`,\n`all` etc.)\nNote that GameBoard extends SquareBoard.\n\nSee `TestSquareBoard` and `TestGameBoard` for examples.",
+      "description_format" : "md",
+      "additional_files" : {
+        "partId" : {
+          "text" : "c8Lsp",
+          "is_visible" : false
+        },
+        "assignmentKey" : {
+          "text" : "",
+          "is_visible" : false
+        }
+      },
+      "task_type" : "edu",
+      "feedback_link" : {
+        "link_type" : "CUSTOM",
+        "link" : "https://www.coursera.org/learn/kotlin-for-java-developers/programming/FNjea/rationals-board/discussions"
+      }
+    } ],
+    "type" : "lesson"
+  }, {
+    "id" : 0,
+    "title" : "Edu additional materials",
+    "unit_id" : 0,
+    "task_list" : [ {
+      "name" : "Edu additional materials",
+      "stepic_id" : 0,
+      "task_files" : { },
+      "test_files" : { },
+      "additional_files" : {
+        "build.gradle" : {
+          "text" : "buildscript {\n    ext.kotlin_version = '1.2.51'\n\n    repositories {\n        mavenCentral()\n    }\n\n    dependencies {\n        classpath \"org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version\"\n    }\n}\n\ndef printOutput(def output) {\n    return tasks.create(\"printOutput\") {\n        for (line in output.toString().readLines()) {\n            println \"#educational_plugin\" + line\n        }\n    }\n}\n\nsubprojects {\n    apply plugin: 'application'\n    apply plugin: 'java'\n    apply plugin: 'kotlin'\n\n    sourceCompatibility = 1.8\n\n    repositories {\n        mavenCentral()\n    }\n\n    dependencies {\n        compile \"org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version\"\n        testCompile group: 'junit', name: 'junit', version: '4.12'\n    }\n\n    compileKotlin.destinationDir = compileJava.destinationDir\n\n    compileKotlin {\n        kotlinOptions.jvmTarget = \"1.8\"\n    }\n    compileTestKotlin {\n        kotlinOptions.jvmTarget = \"1.8\"\n    }\n\n    sourceSets {\n        main {\n            kotlin.srcDir 'src'\n            java.srcDir 'src'\n        }\n        test {\n            kotlin.srcDir 'test'\n            java.srcDir 'test'\n        }\n    }\n\n    mainClassName = project.hasProperty(\"mainClass\") ? project.getProperty(\"mainClass\") : \"\"\n\n    test {\n        outputs.upToDateWhen { false }\n        afterTest { TestDescriptor test, TestResult result ->\n            if (result.resultType == TestResult.ResultType.FAILURE) {\n                def message = result.exception?.message ?: \"Wrong answer\"\n                def lines = message.readLines()\n                println \"#educational_plugin FAILED + \" + lines[0]\n                lines[1..-1].forEach { line ->\n                    println \"#educational_plugin\" + line\n                }\n                // we need this to separate output of different tests\n                println\n            }\n        }\n    }\n\n    def runOutput = new ByteArrayOutputStream()\n    tasks.run.setStandardOutput(runOutput)\n    tasks.run.doLast { printOutput(runOutput) }\n}\n\nproject(':util') {\n    dependencies {\n        compile group: 'junit', name: 'junit', version: '4.12'\n    }\n}\n\nconfigure(subprojects.findAll {it.name != 'util'}) {\n    dependencies {\n        compile project(':util').sourceSets.main.output\n        testCompile project(':util').sourceSets.test.output\n    }\n}\n\ntask wrapper(type: Wrapper) {\n    gradleVersion = '4.8'\n}\n",
+          "is_visible" : false
+        }
+      },
+      "task_type" : "edu",
+      "feedback_link" : {
+        "link_type" : "STEPIK"
+      }
+    } ],
+    "type" : "lesson"
+  } ]
+}
