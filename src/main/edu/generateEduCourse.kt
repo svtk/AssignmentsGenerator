@@ -16,6 +16,7 @@ fun main(args: Array<String>) {
     val week5 = WeekInfo(5, listOf(games))
 
     generateEduCourse(week2)
+    generateEduCourse(week4)
 }
 
 private fun generateEduCourse(weekInfo: WeekInfo) {

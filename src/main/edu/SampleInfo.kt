@@ -13,16 +13,6 @@ sealed class Snippet
 data class CodeSnippet(val code: String) : Snippet()
 data class TaskSnippet(val placeholder: String) : Snippet()
 
-private fun createTaskSnippet(code: String): TaskSnippet {
-    val placeholder = if (code.startsWith(SKIP_START)) {
-        ""
-    } else {
-        TODO_TEXT
-    }
-
-    return TaskSnippet(placeholder)
-}
-
 class SampleInfo(val file: File) {
     val code = file.readText()
 
@@ -30,9 +20,9 @@ class SampleInfo(val file: File) {
         code.split(TODO_END, SKIP_END).flatMap {
             when {
                 it.contains(TODO_START) -> listOf(CodeSnippet(it.substringBefore(TODO_START)),
-                        createTaskSnippet(it.substringAfter(TODO_START)))
+                        TaskSnippet(TODO_TEXT))
                 it.contains(SKIP_START) -> listOf(CodeSnippet(it.substringBefore(SKIP_START)),
-                        createTaskSnippet(it.substringAfter(SKIP_START)))
+                        TaskSnippet(""))
                 else -> listOf(CodeSnippet(it))
             }
         }
@@ -67,8 +57,11 @@ class SampleInfo(val file: File) {
     }
 
     val placeholders: List<Placeholder>
-        get() = taskSnippets.zip(offsets).map { (taskSnippet, offset) ->
-            Placeholder(offset, taskSnippet.placeholder.length,
-                    listOf(), taskSnippet.placeholder)
+        get() = taskSnippets.zip(offsets).mapNotNull { (taskSnippet, offset) ->
+            if (taskSnippet.placeholder.isNotEmpty()) {
+                Placeholder(offset, taskSnippet.placeholder.length,
+                        listOf(), taskSnippet.placeholder)
+            }
+            else null
         }
 }
