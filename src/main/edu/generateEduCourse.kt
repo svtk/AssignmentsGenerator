@@ -16,7 +16,9 @@ fun main(args: Array<String>) {
     val week5 = WeekInfo(5, listOf(games))
 
     generateEduCourse(week2)
+    generateEduCourse(week3)
     generateEduCourse(week4)
+    generateEduCourse(week5)
 }
 
 private fun generateEduCourse(weekInfo: WeekInfo) {
@@ -46,13 +48,14 @@ fun AssignmentInfo.generateLesson(): Lesson {
     val descriptionText = markdownFile.readText()
 
     val taskFiles =
-            sourceFiles.map { it.path to TaskFile(it.path, it.sampleInfo.taskText, it.sampleInfo.placeholders) }.toMap()
+            sourceFiles.map { it.fullPath to TaskFile(it.fullPath, it.sampleInfo.taskText, it.sampleInfo.placeholders) }.toMap()
 
     val testsAsFiles =
-            testFiles.map { it.path to TaskFile(it.path, it.sampleInfo.code, listOf()) }.toMap()
+//            testFiles.map { it.fullPath to TaskFile(it.fullPath, it.sampleInfo.code, listOf()) }.toMap()
+            testFiles.map { it.shortPath to TaskFile(it.shortPath, it.sampleInfo.code, listOf()) }.toMap()
 
     val testsAsTests =
-            testFiles.map { "test/Tests.kt" to it.sampleInfo.code }.toMap()
+            testFiles.map { it.shortPath to it.sampleInfo.code }.toMap()
 
     val additionalFiles = mapOf(
             "partId" to AdditionalFile(AssignmentIDs.getPartId(this), visible = false),
@@ -62,7 +65,7 @@ fun AssignmentInfo.generateLesson(): Lesson {
 
     return Lesson(0, title,
             0,
-            listOf(Task(title, 0,
+            listOf(Task("Task", 0,
                     description_text = descriptionText,
                     description_format = "md",
                     task_files = taskFiles + testsAsFiles,

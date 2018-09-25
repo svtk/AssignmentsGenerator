@@ -31,7 +31,11 @@ data class AssignmentInfo(
     }
 }
 
-data class TaskFileInfo(val path: String, val sampleInfo: SampleInfo)
+data class TaskFileInfo(private val rootDir: String, private val path: String, val sampleInfo: SampleInfo) {
+    val fileName: String = path.substringAfterLast("/")
+    val fullPath: String = "$rootDir/$path"
+    val shortPath: String = "$rootDir/$fileName"
+}
 
 private val ASSIGNMENTS_PROJECT = "/Users/svtk/Coursera/KotlinCourseraAssignments/src"
 private val SOURCES_PATH = "$ASSIGNMENTS_PROJECT/main"
@@ -44,14 +48,14 @@ fun createAssignmentInfo(title: String, week: String, packageName: String): Assi
     val sourceFiles = sourcesDir
             .walk()
             .filter { it.extension == "kt" }
-            .map { TaskFileInfo("src/" + it.path.substringAfter("$SOURCES_PATH/$week/"), SampleInfo(it)) }
+            .map { TaskFileInfo("src", it.path.substringAfter("$SOURCES_PATH/$week/"), SampleInfo(it)) }
             .toList()
 
     val testsDir = File("$TESTS_PATH/$week/$packageName")
     val testFiles = testsDir
             .walk()
             .filter { it.extension == "kt" }
-            .map { TaskFileInfo("test/" + it.path.substringAfter("$TESTS_PATH/$week/"), SampleInfo(it)) }
+            .map { TaskFileInfo("test", it.path.substringAfter("$TESTS_PATH/$week/"), SampleInfo(it)) }
             .toList()
     return AssignmentInfo(title, packageName, taskDescription, sourceFiles, testFiles)
 }
