@@ -34,7 +34,7 @@ data class Task(
         @field:JsonInclude(JsonInclude.Include.NON_NULL)
         val additional_files: Map<String, AdditionalFile>,
         val task_type: String = "edu",
-        val feedback_link: FeedbackLink = FeedbackLink("NONE")
+        val feedback_link: FeedbackLink
 )
 
 data class TaskFile(
@@ -56,4 +56,4 @@ data class Placeholder(
         val placeholder_text: String
 )
 
-data class FeedbackLink(val link_type: String)
+data class FeedbackLink(val link_type: String, val link: String)

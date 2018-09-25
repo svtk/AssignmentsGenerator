@@ -22,4 +22,8 @@ object AssignmentIDs {
 
     fun getAssignmentKey(assignmentInfo: AssignmentInfo): String =
             properties.getProperty(prefix(assignmentInfo) + "assignmentKey")
+
+    fun getFeedbackLink(assignmentInfo: AssignmentInfo): String =
+            "https://www.coursera.org/learn/kotlin-for-java-developers/programming/" +
+            properties.getProperty(prefix(assignmentInfo) + "linkKey") + "/discussions"
 }

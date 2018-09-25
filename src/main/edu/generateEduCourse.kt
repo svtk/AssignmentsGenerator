@@ -57,6 +57,8 @@ fun AssignmentInfo.generateLesson(): Lesson {
             "partId" to AdditionalFile(AssignmentIDs.getPartId(this), visible = false),
             "assignmentKey" to AdditionalFile(AssignmentIDs.getAssignmentKey(this), visible = false))
 
+    val feedbackLink = FeedbackLink("CUSTOM", AssignmentIDs.getFeedbackLink(this))
+
     return Lesson(0, title,
             0,
             listOf(Task(title, 0,
@@ -64,5 +66,6 @@ fun AssignmentInfo.generateLesson(): Lesson {
                     description_format = "md",
                     task_files = taskFiles + testsAsFiles,
                     test_files = testsAsTests,
-                    additional_files = additionalFiles)))
+                    additional_files = additionalFiles,
+                    feedback_link = feedbackLink)))
 }
