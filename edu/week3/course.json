@@ -1,0 +1,156 @@
+{
+  "summary" : "Assignment for Week 3 of the Coursera course 'Kotlin for Java Developers':https://www.coursera.org/learn/kotlin-for-java-developers/",
+  "title" : "Kotlin for Java Developers. Week 3.",
+  "programming_language" : "kotlin",
+  "language" : "en",
+  "items" : [ {
+    "id" : 0,
+    "title" : "Nice String",
+    "unit_id" : 0,
+    "task_list" : [ {
+      "name" : "Task",
+      "stepic_id" : 0,
+      "task_files" : {
+        "src/nicestring/NiceString.kt" : {
+          "name" : "src/nicestring/NiceString.kt",
+          "text" : "package nicestring\n\nfun String.isNice(): Boolean {\n    TODO()\n}",
+          "placeholders" : [ {
+            "offset" : 55,
+            "length" : 6,
+            "hints" : [ ],
+            "placeholder_text" : "TODO()"
+          } ]
+        },
+        "test/TestNiceStrings.kt" : {
+          "name" : "test/TestNiceStrings.kt",
+          "text" : "package nicestring\n\nimport org.junit.Assert\nimport org.junit.Test\n\nclass TestNiceStrings {\n\n    private fun testNiceString(string: String, expected: Boolean) {\n        Assert.assertEquals(\"Wrong result for \\\"$string\\\".isNice()\", expected, string.isNice())\n    }\n\n    @Test\n    fun testExample1() = testNiceString(\"bac\", false)\n\n    @Test\n    fun testExample2() = testNiceString(\"aza\", false)\n\n    @Test\n    fun testExample3() = testNiceString(\"abaca\", false)\n\n    @Test\n    fun testExample4() = testNiceString(\"baaa\", true)\n\n    @Test\n    fun testExample5() = testNiceString(\"aaab\", true)\n}",
+          "placeholders" : [ ]
+        }
+      },
+      "test_files" : {
+        "test/TestNiceStrings.kt" : "package nicestring\n\nimport org.junit.Assert\nimport org.junit.Test\n\nclass TestNiceStrings {\n\n    private fun testNiceString(string: String, expected: Boolean) {\n        Assert.assertEquals(\"Wrong result for \\\"$string\\\".isNice()\", expected, string.isNice())\n    }\n\n    @Test\n    fun testExample1() = testNiceString(\"bac\", false)\n\n    @Test\n    fun testExample2() = testNiceString(\"aza\", false)\n\n    @Test\n    fun testExample3() = testNiceString(\"abaca\", false)\n\n    @Test\n    fun testExample4() = testNiceString(\"baaa\", true)\n\n    @Test\n    fun testExample5() = testNiceString(\"aaab\", true)\n}"
+      },
+      "description_text" : "## Nice String\n\nWe'll say a string is nice if at least two of the following conditions are satisfied:\n\n1. It doesn't contain substrings `bu`, `ba` or `be`;\n2. It contains at least three vowels (vowels are `a`, `e`, `i`, `o` and `u`);\n3. It contains a double letter (at least two similar letters following one\nanother), like `b` in `\"abba\"`.\n\nYour task is to check whether a given string is nice. \nStrings for this task will consist of lowercase letters only.\nNote that for the purpose of this task, we don't consider 'y' as a vowel.\n\n#### Example 1\n\n`\"bac\"` isn't nice. No conditions are satisfied: it contains a `ba` substring,\ncontains only one vowel and no doubles.\n\n#### Example 2\n\n`\"aza\"` isn't nice. Only the first condition is satisfied, but the string\ndoesn't contain enough vowels or doubles.\n\n#### Example 3\n\n`\"abaca\"` isn't nice. The second condition is satisfied: it contains three\nvowels `a`, but the other two aren't satisfied: it contains `ba` and no\ndoubles.\n\n#### Example 4\n\n`\"baaa\"` is nice. The conditions #2 and #3 are satisfied: it contains\nthree vowels `a` and a double `a`. \n\n#### Example 5\n\n`\"aaab\"` is nice, because all three conditions are satisfied.",
+      "description_format" : "md",
+      "additional_files" : {
+        "partId" : {
+          "text" : "oYlfC",
+          "is_visible" : false
+        },
+        "assignmentKey" : {
+          "text" : "L5n-E72jEeibpxJ59cbklA",
+          "is_visible" : false
+        }
+      },
+      "task_type" : "edu",
+      "feedback_link" : {
+        "link_type" : "CUSTOM",
+        "link" : "https://www.coursera.org/learn/kotlin-for-java-developers/programming/hlugM/nice-string-taxi-park/discussions"
+      }
+    } ],
+    "type" : "lesson"
+  }, {
+    "id" : 0,
+    "title" : "Taxi Park",
+    "unit_id" : 0,
+    "task_list" : [ {
+      "name" : "Task",
+      "stepic_id" : 0,
+      "task_files" : {
+        "src/taxipark/TaxiPark.kt" : {
+          "name" : "src/taxipark/TaxiPark.kt",
+          "text" : "package taxipark\n\ndata class TaxiPark(\n        val allDrivers: Set<Driver>,\n        val allPassengers: Set<Passenger>,\n        val trips: List<Trip>)\n\ndata class Driver(val name: String)\ndata class Passenger(val name: String)\n\ndata class Trip(\n        val driver: Driver,\n        val passengers: Set<Passenger>,\n        val duration: Int,\n        val distance: Double,\n        val discount: Double? = null\n) {\n    val cost: Double\n        get() = (1 - (discount ?: 0.0)) * (duration + distance)\n}",
+          "placeholders" : [ ]
+        },
+        "src/taxipark/TaxiParkTask.kt" : {
+          "name" : "src/taxipark/TaxiParkTask.kt",
+          "text" : "package taxipark\n\n/*\n * Task #1. Find all the drivers who performed no trips.\n */\nfun TaxiPark.findFakeDrivers(): Set<Driver> =\n        TODO()\n\n/*\n * Task #2. Find all the clients who completed at least the given number of trips.\n */\nfun TaxiPark.findFaithfulPassengers(minTrips: Int): Set<Passenger> =\n        TODO()\n\n/*\n * Task #3. Find all the passengers, who were taken by a given driver more than once.\n */\nfun TaxiPark.findFrequentPassengers(driver: Driver): Set<Passenger> =\n        TODO()\n\n/*\n * Task #4. Find the passengers who had a discount for majority of their trips.\n */\nfun TaxiPark.findSmartPassengers(): Set<Passenger> =\n        TODO()\n\n/*\n * Task #5. Find the most frequent trip duration among minute periods 0..9, 10..19, 20..29, and so on.\n * Return any period if many are the most frequent, return `null` if there're no trips.\n */\nfun TaxiPark.findTheMostFrequentTripDurationPeriod(): IntRange? {\n    return TODO()\n}\n\n/*\n * Task #6.\n * Check whether 20% of the drivers contribute 80% of the income.\n */\nfun TaxiPark.checkParetoPrinciple(): Boolean {\n    TODO()\n}",
+          "placeholders" : [ {
+            "offset" : 136,
+            "length" : 6,
+            "hints" : [ ],
+            "placeholder_text" : "TODO()"
+          }, {
+            "offset" : 311,
+            "length" : 6,
+            "hints" : [ ],
+            "placeholder_text" : "TODO()"
+          }, {
+            "offset" : 490,
+            "length" : 6,
+            "hints" : [ ],
+            "placeholder_text" : "TODO()"
+          }, {
+            "offset" : 646,
+            "length" : 6,
+            "hints" : [ ],
+            "placeholder_text" : "TODO()"
+          }, {
+            "offset" : 929,
+            "length" : 6,
+            "hints" : [ ],
+            "placeholder_text" : "TODO()"
+          }, {
+            "offset" : 1075,
+            "length" : 6,
+            "hints" : [ ],
+            "placeholder_text" : "TODO()"
+          } ]
+        },
+        "test/TaxiParkTestUtil.kt" : {
+          "name" : "test/TaxiParkTestUtil.kt",
+          "text" : "package taxipark\n\nfun driver(i: Int) = Driver(\"D-$i\")\nfun passenger(i: Int) = Passenger(\"P-$i\")\n\nfun drivers(indices: List<Int>) = indices.map(::driver).toSet()\nfun drivers(range: IntRange) = drivers(range.toList())\nfun drivers(vararg indices: Int) = drivers(indices.toList())\n\nfun passengers(indices: List<Int>) = indices.map(::passenger).toSet()\nfun passengers(range: IntRange) = passengers(range.toList())\nfun passengers(vararg indices: Int) = passengers(indices.toList())\n\nfun taxiPark(driverIndexes: IntRange, passengerIndexes: IntRange, vararg trips: Trip) =\n        TaxiPark(drivers(driverIndexes), passengers(passengerIndexes), trips.toList())\n\nfun trip(driverIndex: Int, passengerIndexes: List<Int>, duration: Int = 10, distance: Double = 3.0, discount: Double? = null) =\n        Trip(driver(driverIndex), passengers(passengerIndexes), duration, distance, discount)\n\nfun trip(driverIndex: Int, passenger: Int, duration: Int = 10, distance: Double = 3.0, discount: Double? = null) =\n        Trip(driver(driverIndex), passengers(passenger), duration, distance, discount)\n\nfun TaxiPark.display() = buildString {\n    appendln()\n    appendln(\"Taxi park:\")\n    appendln(\"Drivers: ${allDrivers.joinToString { it.name }}\")\n    appendln(\"Passengers: ${allPassengers.joinToString { it.name }}\")\n    appendln(\"Trips: ${trips.joinToString { it.display() }}\")\n}\n\nfun Trip.display(): String {\n    val discountText = discount?.let { \", $it\" } ?: \"\"\n    return \"(${driver.name}, ${passengers.joinToString(prefix = \"[\", postfix = \"]\") { it.name }}, $duration, $distance$discountText)\"\n}\n",
+          "placeholders" : [ ]
+        },
+        "test/TestTaxiPark.kt" : {
+          "name" : "test/TestTaxiPark.kt",
+          "text" : "package taxipark\n\nimport org.junit.Assert\nimport org.junit.Test\n\nclass TestTaxiPark {\n    @Test\n    fun testFakeDrivers() {\n        val tp = taxiPark(1..3, 1..2, trip(1, 1), trip(1, 2))\n        Assert.assertEquals(\"Wrong result for 'findFakeDrivers()'.\" + tp.display(),\n                drivers(2, 3).toSet(), tp.findFakeDrivers())\n    }\n\n    @Test\n    fun testFaithfulPassengers() {\n        val tp = taxiPark(1..3, 1..5, trip(1, 1), trip(2, 1), trip(1, 4), trip(3, 4), trip(1, 5), trip(2, 5), trip(2, 2))\n        Assert.assertEquals(\"Wrong result for 'findFaithfulPassengers()'. MinTrips: 2.\" + tp.display(),\n                passengers(1, 4, 5), tp.findFaithfulPassengers(2))\n    }\n\n    @Test\n    fun testFrequentPassengers() {\n        val tp = taxiPark(1..2, 1..4, trip(1, 1), trip(1, 1), trip(1, listOf(1, 3)), trip(1, 3), trip(1, 2), trip(2, 2))\n        Assert.assertEquals(\"Wrong result for 'findFrequentPassengers()'. Driver: ${driver(1).name}.\" + tp.display(),\n                passengers(1, 3), tp.findFrequentPassengers(driver(1)))\n    }\n\n    @Test\n    fun testSmartPassengers() {\n        val tp = taxiPark(1..2, 1..2, trip(1, 1, discount = 0.1), trip(2, 2))\n        Assert.assertEquals(\"Wrong result for 'findSmartPassengers()'.\" + tp.display(),\n                passengers(1), tp.findSmartPassengers())\n    }\n\n    @Test\n    fun testTheMostFrequentTripDuration() {\n        val tp = taxiPark(1..3, 1..5, trip(1, 1, duration = 10), trip(3, 4, duration = 30),\n                trip(1, 2, duration = 20), trip(2, 3, duration = 35))\n        Assert.assertEquals(\"Wrong result for 'findTheMostFrequentTripDurationPeriod()'.\",\n                30..39, tp.findTheMostFrequentTripDurationPeriod())\n    }\n\n    @Test\n    fun testParetoPrincipleSucceeds() {\n        val tp = taxiPark(1..5, 1..4,\n                trip(1, 1, 20, 20.0),\n                trip(1, 2, 20, 20.0),\n                trip(1, 3, 20, 20.0),\n                trip(1, 4, 20, 20.0),\n                trip(2, 1, 20, 20.0))\n        Assert.assertEquals(\n                \"Wrong result for 'checkParetoPrinciple()'.\" + tp.display(),\n                true, tp.checkParetoPrinciple())\n    }\n\n    @Test\n    fun testParetoPrincipleFails() {\n        val tp = taxiPark(1..5, 1..4,\n                trip(1, 1, 20, 20.0),\n                trip(1, 2, 20, 20.0),\n                trip(1, 3, 20, 20.0),\n                trip(2, 4, 20, 20.0),\n                trip(3, 1, 20, 20.0))\n        Assert.assertEquals(\n                \"Wrong result for 'checkParetoPrinciple()'.\" + tp.display(),\n                false, tp.checkParetoPrinciple())\n    }\n\n    @Test\n    fun testParetoPrincipleNoTrips() {\n        val tp = taxiPark(1..5, 1..4)\n        Assert.assertEquals(\n                \"Wrong result for 'checkParetoPrinciple()'.\" + tp.display(),\n                false, tp.checkParetoPrinciple())\n    }\n}",
+          "placeholders" : [ ]
+        }
+      },
+      "test_files" : {
+        "test/TaxiParkTestUtil.kt" : "package taxipark\n\nfun driver(i: Int) = Driver(\"D-$i\")\nfun passenger(i: Int) = Passenger(\"P-$i\")\n\nfun drivers(indices: List<Int>) = indices.map(::driver).toSet()\nfun drivers(range: IntRange) = drivers(range.toList())\nfun drivers(vararg indices: Int) = drivers(indices.toList())\n\nfun passengers(indices: List<Int>) = indices.map(::passenger).toSet()\nfun passengers(range: IntRange) = passengers(range.toList())\nfun passengers(vararg indices: Int) = passengers(indices.toList())\n\nfun taxiPark(driverIndexes: IntRange, passengerIndexes: IntRange, vararg trips: Trip) =\n        TaxiPark(drivers(driverIndexes), passengers(passengerIndexes), trips.toList())\n\nfun trip(driverIndex: Int, passengerIndexes: List<Int>, duration: Int = 10, distance: Double = 3.0, discount: Double? = null) =\n        Trip(driver(driverIndex), passengers(passengerIndexes), duration, distance, discount)\n\nfun trip(driverIndex: Int, passenger: Int, duration: Int = 10, distance: Double = 3.0, discount: Double? = null) =\n        Trip(driver(driverIndex), passengers(passenger), duration, distance, discount)\n\nfun TaxiPark.display() = buildString {\n    appendln()\n    appendln(\"Taxi park:\")\n    appendln(\"Drivers: ${allDrivers.joinToString { it.name }}\")\n    appendln(\"Passengers: ${allPassengers.joinToString { it.name }}\")\n    appendln(\"Trips: ${trips.joinToString { it.display() }}\")\n}\n\nfun Trip.display(): String {\n    val discountText = discount?.let { \", $it\" } ?: \"\"\n    return \"(${driver.name}, ${passengers.joinToString(prefix = \"[\", postfix = \"]\") { it.name }}, $duration, $distance$discountText)\"\n}\n",
+        "test/TestTaxiPark.kt" : "package taxipark\n\nimport org.junit.Assert\nimport org.junit.Test\n\nclass TestTaxiPark {\n    @Test\n    fun testFakeDrivers() {\n        val tp = taxiPark(1..3, 1..2, trip(1, 1), trip(1, 2))\n        Assert.assertEquals(\"Wrong result for 'findFakeDrivers()'.\" + tp.display(),\n                drivers(2, 3).toSet(), tp.findFakeDrivers())\n    }\n\n    @Test\n    fun testFaithfulPassengers() {\n        val tp = taxiPark(1..3, 1..5, trip(1, 1), trip(2, 1), trip(1, 4), trip(3, 4), trip(1, 5), trip(2, 5), trip(2, 2))\n        Assert.assertEquals(\"Wrong result for 'findFaithfulPassengers()'. MinTrips: 2.\" + tp.display(),\n                passengers(1, 4, 5), tp.findFaithfulPassengers(2))\n    }\n\n    @Test\n    fun testFrequentPassengers() {\n        val tp = taxiPark(1..2, 1..4, trip(1, 1), trip(1, 1), trip(1, listOf(1, 3)), trip(1, 3), trip(1, 2), trip(2, 2))\n        Assert.assertEquals(\"Wrong result for 'findFrequentPassengers()'. Driver: ${driver(1).name}.\" + tp.display(),\n                passengers(1, 3), tp.findFrequentPassengers(driver(1)))\n    }\n\n    @Test\n    fun testSmartPassengers() {\n        val tp = taxiPark(1..2, 1..2, trip(1, 1, discount = 0.1), trip(2, 2))\n        Assert.assertEquals(\"Wrong result for 'findSmartPassengers()'.\" + tp.display(),\n                passengers(1), tp.findSmartPassengers())\n    }\n\n    @Test\n    fun testTheMostFrequentTripDuration() {\n        val tp = taxiPark(1..3, 1..5, trip(1, 1, duration = 10), trip(3, 4, duration = 30),\n                trip(1, 2, duration = 20), trip(2, 3, duration = 35))\n        Assert.assertEquals(\"Wrong result for 'findTheMostFrequentTripDurationPeriod()'.\",\n                30..39, tp.findTheMostFrequentTripDurationPeriod())\n    }\n\n    @Test\n    fun testParetoPrincipleSucceeds() {\n        val tp = taxiPark(1..5, 1..4,\n                trip(1, 1, 20, 20.0),\n                trip(1, 2, 20, 20.0),\n                trip(1, 3, 20, 20.0),\n                trip(1, 4, 20, 20.0),\n                trip(2, 1, 20, 20.0))\n        Assert.assertEquals(\n                \"Wrong result for 'checkParetoPrinciple()'.\" + tp.display(),\n                true, tp.checkParetoPrinciple())\n    }\n\n    @Test\n    fun testParetoPrincipleFails() {\n        val tp = taxiPark(1..5, 1..4,\n                trip(1, 1, 20, 20.0),\n                trip(1, 2, 20, 20.0),\n                trip(1, 3, 20, 20.0),\n                trip(2, 4, 20, 20.0),\n                trip(3, 1, 20, 20.0))\n        Assert.assertEquals(\n                \"Wrong result for 'checkParetoPrinciple()'.\" + tp.display(),\n                false, tp.checkParetoPrinciple())\n    }\n\n    @Test\n    fun testParetoPrincipleNoTrips() {\n        val tp = taxiPark(1..5, 1..4)\n        Assert.assertEquals(\n                \"Wrong result for 'checkParetoPrinciple()'.\" + tp.display(),\n                false, tp.checkParetoPrinciple())\n    }\n}"
+      },
+      "description_text" : "## Taxi Park\n\nThe `TaxiPark` class stores information about the registered drivers, passengers,\nand their trips. You task is to implement six functions which collect\ndifferent statistics about the data.  \n\n#### Task 1\n\n```\nfun TaxiPark.findFakeDrivers(): Collection<Driver>\n```\n\nFind all the drivers who performed no trips.\n\n\n#### Task 2\n\n```\nfun TaxiPark.findFaithfulPassengers(minTrips: Int): List<Passenger>\n```\n\nFind all the clients who completed at least the given number of trips.\n\n#### Task 3\n\n```\nfun TaxiPark.findFrequentPassengers(driver: Driver): List<Passenger>\n```\n\nFind all the passengers, who were taken by a given driver more than once.\n\n#### Task 4\n\n```\nfun TaxiPark.findSmartPassengers(): Collection<Passenger>\n```\n\nFind the passengers who had a discount for majority of their trips.\nNote that the discount can't be `0.0`, it's always non-zero if it's recorded. \n\n#### Task 5\n\n```\nfun TaxiPark.findTheMostFrequentTripDuration(): IntRange?\n```\n\nFind the most frequent trip duration among minute periods 0..9, 10..19, 20..29, and so on.\nReturn any suitable period if many are the most frequent, return `null` if there're no trips.\n \n\n#### Task 6\n\n```\nfun TaxiPark.checkParetoPrinciple(): Boolean\n```\n\nCheck whether no more than 20% of the drivers contribute 80% of the income.\nIf the taxi park contains no trips, the result should be `false`. ",
+      "description_format" : "md",
+      "additional_files" : {
+        "partId" : {
+          "text" : "sg0yY",
+          "is_visible" : false
+        },
+        "assignmentKey" : {
+          "text" : "L5n-E72jEeibpxJ59cbklA",
+          "is_visible" : false
+        }
+      },
+      "task_type" : "edu",
+      "feedback_link" : {
+        "link_type" : "CUSTOM",
+        "link" : "https://www.coursera.org/learn/kotlin-for-java-developers/programming/hlugM/nice-string-taxi-park/discussions"
+      }
+    } ],
+    "type" : "lesson"
+  }, {
+    "id" : 0,
+    "title" : "Edu additional materials",
+    "unit_id" : 0,
+    "task_list" : [ {
+      "name" : "Edu additional materials",
+      "stepic_id" : 0,
+      "task_files" : { },
+      "test_files" : { },
+      "additional_files" : {
+        "build.gradle" : {
+          "text" : "buildscript {\n    ext.kotlin_version = '1.2.51'\n\n    repositories {\n        mavenCentral()\n    }\n\n    dependencies {\n        classpath \"org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version\"\n    }\n}\n\ndef printOutput(def output) {\n    return tasks.create(\"printOutput\") {\n        for (line in output.toString().readLines()) {\n            println \"#educational_plugin\" + line\n        }\n    }\n}\n\nsubprojects {\n    apply plugin: 'application'\n    apply plugin: 'java'\n    apply plugin: 'kotlin'\n\n    sourceCompatibility = 1.8\n\n    repositories {\n        mavenCentral()\n    }\n\n    dependencies {\n        compile \"org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version\"\n        testCompile group: 'junit', name: 'junit', version: '4.12'\n    }\n\n    compileKotlin.destinationDir = compileJava.destinationDir\n\n    compileKotlin {\n        kotlinOptions.jvmTarget = \"1.8\"\n    }\n    compileTestKotlin {\n        kotlinOptions.jvmTarget = \"1.8\"\n    }\n\n    sourceSets {\n        main {\n            kotlin.srcDir 'src'\n            java.srcDir 'src'\n        }\n        test {\n            kotlin.srcDir 'test'\n            java.srcDir 'test'\n        }\n    }\n\n    mainClassName = project.hasProperty(\"mainClass\") ? project.getProperty(\"mainClass\") : \"\"\n\n    test {\n        outputs.upToDateWhen { false }\n        afterTest { TestDescriptor test, TestResult result ->\n            if (result.resultType == TestResult.ResultType.FAILURE) {\n                def message = result.exception?.message ?: \"Wrong answer\"\n                def lines = message.readLines()\n                println \"#educational_plugin FAILED + \" + lines[0]\n                lines[1..-1].forEach { line ->\n                    println \"#educational_plugin\" + line\n                }\n                // we need this to separate output of different tests\n                println\n            }\n        }\n    }\n\n    def runOutput = new ByteArrayOutputStream()\n    tasks.run.setStandardOutput(runOutput)\n    tasks.run.doLast { printOutput(runOutput) }\n}\n\nproject(':util') {\n    dependencies {\n        compile group: 'junit', name: 'junit', version: '4.12'\n    }\n}\n\nconfigure(subprojects.findAll {it.name != 'util'}) {\n    dependencies {\n        compile project(':util').sourceSets.main.output\n        testCompile project(':util').sourceSets.test.output\n    }\n}\n\ntask wrapper(type: Wrapper) {\n    gradleVersion = '4.8'\n}\n",
+          "is_visible" : false
+        }
+      },
+      "task_type" : "edu",
+      "feedback_link" : {
+        "link_type" : "STEPIK"
+      }
+    } ],
+    "type" : "lesson"
+  } ]
+}
