@@ -11,10 +11,11 @@ data class WeekInfo(
             assignment.weekInfo = this
         }
     }
-    private val courseTitle = "Kotlin for Java Developers."
-    val courseSummary = "Assignment for Week $weekNumber of the Coursera course 'Kotlin for Java Developers':" +
-            "https://www.coursera.org/learn/kotlin-for-java-developers/"
-    val title get() = "$courseTitle Week $weekNumber."
+    private val courseTitle = "Kotlin for Java Developers"
+    val courseSummary = "Assignment for Week $weekNumber of the Coursera " +
+            "<a href=\"https://www.coursera.org/learn/kotlin-for-java-developers/\">Kotlin for Java Developers</a> course"
+
+    val title get() = "$courseTitle. Week $weekNumber"
     val dirName get() = "week$weekNumber"
 }
 
