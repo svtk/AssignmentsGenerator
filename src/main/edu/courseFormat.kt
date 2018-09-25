@@ -28,7 +28,7 @@ data class Task(
         @field:JsonInclude(JsonInclude.Include.NON_NULL)
         val test_files: Map<String, String>?,
         @field:JsonInclude(JsonInclude.Include.NON_NULL)
-        val description_text: String?,
+        val description_text: String? = null,
         @field:JsonInclude(JsonInclude.Include.NON_NULL)
         val description_format: String? = null,
         @field:JsonInclude(JsonInclude.Include.NON_NULL)
@@ -56,4 +56,7 @@ data class Placeholder(
         val placeholder_text: String
 )
 
-data class FeedbackLink(val link_type: String, val link: String)
+data class FeedbackLink(
+        val link_type: String,
+        @field:JsonInclude(JsonInclude.Include.NON_NULL)
+        val link: String? = null)

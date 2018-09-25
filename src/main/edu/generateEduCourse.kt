@@ -25,7 +25,7 @@ private fun generateEduCourse(weekInfo: WeekInfo) {
             title = weekInfo.title,
             programming_language = "kotlin",
             language = "en",
-            items = weekInfo.generateLessons())
+            items = weekInfo.generateLessons() + getLessonWithBuildFile())
 
     File("edu").mkdir()
     File("edu/${weekInfo.dirName}").mkdir()
@@ -46,7 +46,7 @@ fun AssignmentInfo.generateLesson(): Lesson {
     val descriptionText = markdownFile.readText()
 
     val taskFiles =
-            sourceFiles.map { it.path to TaskFile(it.path, it.sampleInfo.taskText, it.sampleInfo.placeholders ) }.toMap()
+            sourceFiles.map { it.path to TaskFile(it.path, it.sampleInfo.taskText, it.sampleInfo.placeholders) }.toMap()
 
     val testsAsFiles =
             testFiles.map { it.path to TaskFile(it.path, it.sampleInfo.code, listOf()) }.toMap()
@@ -69,4 +69,19 @@ fun AssignmentInfo.generateLesson(): Lesson {
                     test_files = testsAsTests,
                     additional_files = additionalFiles,
                     feedback_link = feedbackLink)))
+}
+
+fun getLessonWithBuildFile(): Lesson {
+    val fileName = "build.gradle"
+    val buildFileText = File("edu/build.gradle.txt").readText()
+    val additionalFiles = mapOf(fileName to
+            AdditionalFile(buildFileText, visible = false))
+    val name = "Edu additional materials"
+    val task = Task(name, 0,
+            additional_files = additionalFiles,
+            task_files = emptyMap(),
+            test_files = emptyMap(),
+            feedback_link = FeedbackLink(link_type = "STEPIK")
+    )
+    return Lesson(0, name, 0, listOf(task))
 }
