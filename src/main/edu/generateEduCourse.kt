@@ -51,7 +51,11 @@ fun AssignmentInfo.generateLesson(): Lesson {
             testFiles.map { it.path to TaskFile(it.path, it.sampleInfo.code, listOf()) }.toMap()
 
     val testsAsTests =
-            testFiles.map { it.path to it.sampleInfo.code }.toMap()
+            testFiles.map { "test/Tests.kt" to it.sampleInfo.code }.toMap()
+
+    val additionalFiles = mapOf(
+            "partId" to AdditionalFile(AssignmentIDs.getPartId(this), visible = false),
+            "assignmentKey" to AdditionalFile(AssignmentIDs.getAssignmentKey(this), visible = false))
 
     return Lesson(0, title,
             0,
@@ -59,5 +63,6 @@ fun AssignmentInfo.generateLesson(): Lesson {
                     description_text = descriptionText,
                     description_format = "md",
                     task_files = taskFiles + testsAsFiles,
-                    test_files = testsAsTests)))
+                    test_files = testsAsTests,
+                    additional_files = additionalFiles)))
 }

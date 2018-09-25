@@ -6,6 +6,11 @@ data class WeekInfo(
         val weekNumber: Int,
         val assignments: List<AssignmentInfo>
 ) {
+    init {
+        for (assignment in assignments) {
+            assignment.weekInfo = this
+        }
+    }
     private val courseTitle = "Kotlin for Java Developers."
     val courseSummary = "Assignment for Week $weekNumber of the Coursera course 'Kotlin for Java Developers'"
     val title get() = "$courseTitle Week $weekNumber."
@@ -19,6 +24,7 @@ data class AssignmentInfo(
         val sourceFiles: List<TaskFileInfo>,
         val testFiles: List<TaskFileInfo>
 ) {
+    lateinit var weekInfo: WeekInfo
     override fun toString(): String {
         return "AssignmentInfo(title='$title', packageName='$packageName',\n  markdownFile=$markdownFile,\n  sourceFiles=${sourceFiles.joinToString("\n     ")},\n  testFiles=${testFiles.joinToString("\n    ")})\n\n"
     }

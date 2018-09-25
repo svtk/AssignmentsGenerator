@@ -1,6 +1,7 @@
 package edu
 
 import com.fasterxml.jackson.annotation.JsonInclude
+import com.fasterxml.jackson.annotation.JsonProperty
 
 data class Course(
         @field:JsonInclude(JsonInclude.Include.NON_NULL)
@@ -30,6 +31,8 @@ data class Task(
         val description_text: String?,
         @field:JsonInclude(JsonInclude.Include.NON_NULL)
         val description_format: String? = null,
+        @field:JsonInclude(JsonInclude.Include.NON_NULL)
+        val additional_files: Map<String, AdditionalFile>,
         val task_type: String = "edu",
         val feedback_link: FeedbackLink = FeedbackLink("NONE")
 )
@@ -38,6 +41,12 @@ data class TaskFile(
         val name: String,
         val text: String,
         val placeholders: List<Placeholder>
+)
+
+data class AdditionalFile(
+        val text: String,
+        @field:JsonProperty(value = "is_visible")
+        val visible: Boolean
 )
 
 data class Placeholder(
