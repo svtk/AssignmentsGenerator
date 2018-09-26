@@ -45,7 +45,7 @@
       "task_type" : "edu",
       "feedback_link" : {
         "link_type" : "CUSTOM",
-        "link" : "https://www.coursera.org/learn/kotlin-for-java-developers/programming/hlugM/nice-string-taxi-park/discussions"
+        "link" : "https://www.coursera.org/learn/kotlin-for-java-developers/programming/hlugM/nice-string/discussions"
       }
     } ],
     "type" : "lesson"
@@ -116,18 +116,18 @@
       "description_format" : "md",
       "additional_files" : {
         "partId" : {
-          "text" : "sg0yY",
+          "text" : "RYvjw",
           "is_visible" : false
         },
         "assignmentKey" : {
-          "text" : "L5n-E72jEeibpxJ59cbklA",
+          "text" : "JjCPW8FuEei-Lw5ra1tlSg",
           "is_visible" : false
         }
       },
       "task_type" : "edu",
       "feedback_link" : {
         "link_type" : "CUSTOM",
-        "link" : "https://www.coursera.org/learn/kotlin-for-java-developers/programming/hlugM/nice-string-taxi-park/discussions"
+        "link" : "https://www.coursera.org/learn/kotlin-for-java-developers/programming/xTPZT/taxi-park/discussions"
       }
     } ],
     "type" : "lesson"

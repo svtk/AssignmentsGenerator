@@ -40,7 +40,7 @@
       "task_type" : "edu",
       "feedback_link" : {
         "link_type" : "CUSTOM",
-        "link" : "https://www.coursera.org/learn/kotlin-for-java-developers/programming/FNjea/rationals-board/discussions"
+        "link" : "https://www.coursera.org/learn/kotlin-for-java-developers/programming/FNjea/rationals/discussions"
       }
     } ],
     "type" : "lesson"
@@ -91,18 +91,18 @@
       "description_format" : "md",
       "additional_files" : {
         "partId" : {
-          "text" : "c8Lsp",
+          "text" : "rv5mL",
           "is_visible" : false
         },
         "assignmentKey" : {
-          "text" : "Po8opb2bEeifOA78c-X_8g",
+          "text" : "q3GRK8FuEeit4A6YDvCSVA",
           "is_visible" : false
         }
       },
       "task_type" : "edu",
       "feedback_link" : {
         "link_type" : "CUSTOM",
-        "link" : "https://www.coursera.org/learn/kotlin-for-java-developers/programming/FNjea/rationals-board/discussions"
+        "link" : "https://www.coursera.org/learn/kotlin-for-java-developers/programming/7fkLn/board/discussions"
       }
     } ],
     "type" : "lesson"
