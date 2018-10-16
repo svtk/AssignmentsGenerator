@@ -29,7 +29,7 @@ private fun generateEduCourse(weekInfo: WeekInfo) {
             programming_language = "kotlin",
             language = "en",
             items = weekInfo.generateLessons() + getLessonWithBuildFile(),
-            version = AssignmentIDs.getFormatVersion())
+            version = CourseProperties.getFormatVersion())
 
     File("edu").mkdir()
     File("edu/${weekInfo.dirName}").mkdir()
@@ -60,10 +60,10 @@ fun AssignmentInfo.generateLesson(): Lesson {
             testFiles.map { it.shortPath to it.sampleInfo.code }.toMap()
 
     val additionalFiles = mapOf(
-            "partId" to AdditionalFile(AssignmentIDs.getPartId(this), visible = false),
-            "assignmentKey" to AdditionalFile(AssignmentIDs.getAssignmentKey(this), visible = false))
+            "partId" to AdditionalFile(CourseProperties.getPartId(this), visible = false),
+            "assignmentKey" to AdditionalFile(CourseProperties.getAssignmentKey(this), visible = false))
 
-    val feedbackLink = FeedbackLink("CUSTOM", AssignmentIDs.getFeedbackLink(this))
+    val feedbackLink = FeedbackLink("CUSTOM", CourseProperties.getFeedbackLink(this))
 
     return Lesson(0, title,
             0,
