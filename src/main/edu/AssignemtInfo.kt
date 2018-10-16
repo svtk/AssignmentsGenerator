@@ -42,21 +42,36 @@ private val ASSIGNMENTS_PROJECT = "/Users/svtk/Coursera/KotlinCourseraAssignment
 private val SOURCES_PATH = "$ASSIGNMENTS_PROJECT/main"
 private val TESTS_PATH = "$ASSIGNMENTS_PROJECT/test/initial"
 
-fun createAssignmentInfo(title: String, week: String, packageName: String): AssignmentInfo {
+fun createAssignmentInfo(
+        title: String,
+        week: String,
+        packageName: String,
+        additionalSourceFiles: List<TaskFileInfo> = emptyList()
+): AssignmentInfo {
     val sourcesDir = File("$SOURCES_PATH/$week/$packageName")
     val taskDescription = sourcesDir.subFile("task.md")
 
-    val sourceFiles = sourcesDir
+    val sourceFiles = getSourceFiles(week, packageName)
+
+    val testFiles = getTestFiles(week, packageName)
+    return AssignmentInfo(title, packageName, taskDescription,
+            additionalSourceFiles + sourceFiles, testFiles)
+}
+
+fun getSourceFiles(week: String, packageName: String): List<TaskFileInfo> {
+    val sourcesDir = File("$SOURCES_PATH/$week/$packageName")
+    return sourcesDir
             .walk()
             .filter { it.extension == "kt" }
             .map { TaskFileInfo("src", it.path.substringAfter("$SOURCES_PATH/$week/"), SampleInfo(it)) }
             .toList()
+}
 
+fun getTestFiles(week: String, packageName: String): List<TaskFileInfo> {
     val testsDir = File("$TESTS_PATH/$week/$packageName")
-    val testFiles = testsDir
+    return testsDir
             .walk()
             .filter { it.extension == "kt" }
             .map { TaskFileInfo("test", it.path.substringAfter("$TESTS_PATH/$week/"), SampleInfo(it)) }
             .toList()
-    return AssignmentInfo(title, packageName, taskDescription, sourceFiles, testFiles)
 }

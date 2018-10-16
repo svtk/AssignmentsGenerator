@@ -8,7 +8,8 @@ fun main(args: Array<String>) {
     val taxiPark = createAssignmentInfo("Taxi Park", "_2week", "taxipark")
     val rationals = createAssignmentInfo("Rationals", "_3week", "rationals")
     val board = createAssignmentInfo("Board", "_3week", "board")
-    val games = createAssignmentInfo("Games", "_4week", "games")
+    val games = createAssignmentInfo("Games", "_4week", "games",
+            getSourceFiles("_3week", "board"))
 
     val week2 = WeekInfo(2, listOf(mastermind))
     val week3 = WeekInfo(3, listOf(niceString, taxiPark))
