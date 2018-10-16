@@ -10,7 +10,8 @@ data class Course(
         val title: String,
         val programming_language: String,
         val language: String,
-        val items: List<Lesson>
+        val items: List<Lesson>,
+        val version: Int
 )
 
 data class Lesson(

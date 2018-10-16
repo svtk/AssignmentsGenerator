@@ -127,5 +127,6 @@
       }
     } ],
     "type" : "lesson"
-  } ]
+  } ],
+  "version" : 7
 }

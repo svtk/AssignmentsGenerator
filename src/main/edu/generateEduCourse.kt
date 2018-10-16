@@ -28,7 +28,8 @@ private fun generateEduCourse(weekInfo: WeekInfo) {
             title = weekInfo.title,
             programming_language = "kotlin",
             language = "en",
-            items = weekInfo.generateLessons() + getLessonWithBuildFile())
+            items = weekInfo.generateLessons() + getLessonWithBuildFile(),
+            version = AssignmentIDs.getFormatVersion())
 
     File("edu").mkdir()
     File("edu/${weekInfo.dirName}").mkdir()

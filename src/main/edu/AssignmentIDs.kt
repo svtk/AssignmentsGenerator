@@ -26,4 +26,12 @@ object AssignmentIDs {
     fun getFeedbackLink(assignmentInfo: AssignmentInfo): String =
             "https://www.coursera.org/learn/kotlin-for-java-developers/programming/" +
             properties.getProperty(prefix(assignmentInfo) + "linkKey") + "/discussions"
+
+    fun getFormatVersion(): Int {
+        val propertyName = "course_format_version"
+        val formatVersion = properties.getProperty(propertyName)
+                ?: throw AssertionError("No '$propertyName' property found in $propertiesFile")
+        return formatVersion.toIntOrNull()
+                ?: throw AssertionError("Property '$propertyName' should be integer")
+    }
 }
